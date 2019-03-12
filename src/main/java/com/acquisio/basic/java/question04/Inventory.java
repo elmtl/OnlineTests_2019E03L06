@@ -32,10 +32,11 @@ class Inventory {
         return items.remove(item);
     }
 
-    public Item findFirst(String name) {
+    @SuppressWarnings("unchecked")
+	public <T extends Item> T findFirst(String name) {
         for (Item item : items) {
             if (item.getName().equals(name)) {
-                return item;
+                return (T)item;
             }
         }
         return null;
