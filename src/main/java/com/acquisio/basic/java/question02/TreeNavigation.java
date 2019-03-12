@@ -19,17 +19,39 @@ package com.acquisio.basic.java.question02;
  */
 public class TreeNavigation {
 
-    public static void main(String[] args) {
-        TreeNavigation main = new TreeNavigation();
-        main.treeNode();
-    }
+	public static final String treeIndentationChar = "..";
 
-    private void treeNode() {
-        Node n1 = new Node("6", new Node("5"), new Node("11"));
-        Node n2 = new Node("7", new Node("2"), n1);
-        Node n3 = new Node("9", new Node("4"));
-        Node n4 = new Node("5", null, n3);
-        Node n = new Node("2", n2, n4);
-        // TODO: Implement code here
-    }
+	public static void main(String[] args) {
+		TreeNavigation main = new TreeNavigation();
+		main.treeNode();
+	}
+
+	private void treeNode() {
+		Node n1 = new Node("6", new Node("5"), new Node("11"));
+		Node n2 = new Node("7", new Node("2"), n1);
+		Node n3 = new Node("9", new Node("4"));
+		Node n4 = new Node("5", null, n3);
+		Node n = new Node("2", n2, n4);
+	
+		// TODO: Implement code here
+		printChildrenInfo(n, 1);
+	}
+
+	private void printIndentation(int currentLevel) {
+
+		for (int i = 0; i < currentLevel; i++) {
+			System.out.print(treeIndentationChar);
+		}
+	}
+
+	private void printChildrenInfo(Node aNode, int level) {
+
+		if (aNode != null) {
+			printIndentation(level);
+			System.out.println(aNode.name);
+			for (Node childNode : aNode.children) {
+				printChildrenInfo(childNode, level + 1);
+			}
+		}
+	}
 }
