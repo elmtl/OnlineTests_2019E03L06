@@ -15,13 +15,13 @@ public class LambdasTest {
         File input = new File(Thread.currentThread().getContextClassLoader().getResource("./carts.csv").toURI());
         File output = new File("./carts_output.csv");
         output.delete();
-
         instance.convertCarts(input, output);
-
         assertTrue(output.exists());
         String[] result = FileUtils.readFileToString(output).split("\n");
-        assertEquals(3, result.length);
-        assertEquals(5, result[0].split(","));
+        // make sure there are 3 lines in output
+        assertEquals(3, result.length);        
+        // make sure there are 5 columns in the output
+        assertEquals(5, result[0].split(",").length);
     }
 
 }
