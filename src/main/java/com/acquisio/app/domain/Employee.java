@@ -1,6 +1,9 @@
 package com.acquisio.app.domain;
 
 import javax.persistence.*;
+
+import com.acquisio.app.GravatarUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -68,5 +71,11 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    @Transient
+    public String getGravatarHash()
+    {
+    	return GravatarUtil.md5Hex( this.getEmail() );
     }
 }
