@@ -19,17 +19,22 @@ public class Debugging {
         System.out.println(Arrays.toString(instance.removeEvenNumbers(1, 2, 3, 4)));
     }
 
+    /***
+     * Return an array of integers that have the even numbers removed from the input list 
+     * @param values
+     * @return
+     */
     Integer[] removeEvenNumbers(Integer ... values) {
         // TODO: Fix code here.
 
         List<Integer> integers = new ArrayList<>(Arrays.asList(values));
 
-        for (Integer i : integers) {
+        for (Integer i : new ArrayList<>(integers)) {
             if (i % 2 == 0) { // remove even numbers
                 integers.remove(i);
             }
         }
-
         return integers.toArray(new Integer[integers.size()]);
     }
 }
+
